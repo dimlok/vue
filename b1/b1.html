@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Base 1</title>
+</head>
+<div id="app">
+    <h1>String: {{ name}}</h1>
+    <h1>Nummber: {{ number }}</h1>
+    <h1>Nummber-2 (10+15): {{ 10+15 }}</h1>
+    <h1>Method: {{ sayHelloArrowFuntion() }}</h1>
+    <h1>Method-2: {{ sayHello() }}</h1>
+    <h1>If-Statement: {{ isOk ? 'Ich bin OK': 'Ich bin false' }}</h1>
+
+
+
+</div>
+
+<body>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/vue/2.6.10/vue.common.dev.js"></script>
+    <script>
+        new Vue({
+            el:'#app',
+            data:{
+                name: 'Peter',
+                number: 10+10,
+                isOk:falsegi
+            },
+            methods:{
+                sayHelloArrowFuntion(){
+                    return 'Ich bin Arrow funktion';
+                },
+                sayHello: function sayHello(){
+                    return 'Ich bin standart Funktion';
+                }
+            }
+        })
+
+
+
+    </script>
+</body>
+
+</html>
