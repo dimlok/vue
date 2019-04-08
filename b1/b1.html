@@ -14,6 +14,32 @@
     <h1>Method: {{ sayHelloArrowFuntion() }}</h1>
     <h1>Method-2: {{ sayHello() }}</h1>
     <h1>If-Statement: {{ isOk ? 'Ich bin OK': 'Ich bin false' }}</h1>
+    <h1>Functions: {{ string.split("").reverse().join("") }}</h1>
+    <h1>Verlinkung zu Google:
+        <a v-bind:href="url">GOOGLE</a>
+    </h1>
+    <h1 v-html="link"></h1>
+    <h2>Counter = {{counter}}</h2>
+    <button v-on:click="counterPlus">Counter + 1</button>
+    <hr>
+    <h2 v-on:mouseover="onHover">Counter-2 = {{counter2}}</h2>
+    <button @click="counter2++">Counter-2 + 1</button>
+    <h2 >Counter-3 {{title}} = {{counter3}}</h2>
+    <button @click="countermore(5, 'Counter + 5', $event)">Counter-3 + 5</button>
+    <button @click="countermore(10,' Counter + 10', $event)">Counter-3 + 10</button>
+    <hr>
+    <h2><a href="http://google.de" target="_blank" v-on:click.prevent>Google (disabled link)</a></h2>
+    <div @mousemove= "mouseover" > X {{x}} / Y {{y}} 
+        <div @mousemove.stop>Block disable mousemove()</div>
+    </div>
+    <hr>
+    <div>
+        <input type="text" v-model="inputValue" >
+        <span>{{inputValue}}</span>
+    </div>
+
+
+
 
 
 
@@ -23,18 +49,48 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/vue/2.6.10/vue.common.dev.js"></script>
     <script>
         new Vue({
-            el:'#app',
-            data:{
+            el: '#app',
+            data: {
                 name: 'Peter',
-                number: 10+10,
-                isOk:falsegi
+                number: 10 + 10,
+                isOk: false,
+                string: 'Meine Name ist Superman',
+                url: 'http://google.de',
+                link: '<a href="http://google.de"> Verlinkung-2: Google</a>',
+                counter: 0,
+                counter2: 0,
+                title: "Counter",
+                counter3: 0,
+                x:0,
+                y:0,
+                inputValue: "Hallo"
             },
-            methods:{
-                sayHelloArrowFuntion(){
-                    return 'Ich bin Arrow funktion';
+            methods: {
+                sayHelloArrowFuntion() {
+                    return 'Ich bin abgekürzte Funktion';
                 },
-                sayHello: function sayHello(){
+                sayHello: function sayHello() {
                     return 'Ich bin standart Funktion';
+                },
+                counterPlus() {
+                    this.counter++;
+                },
+                onHover(event){
+                    event.target.style.color = "red";
+                },
+                countermore(num, str, event){
+                    this.title = str;
+                    this.counter3 +=num;
+
+                    if (num === 5) {
+                        event.target.style.color = "blue";
+                    }else if (num === 10) {
+                        event.target.style.color = "orange";
+                    }
+                },
+                mouseover(event){
+                    this.x = event.clientX;
+                    this.y = event.clientY;
                 }
             }
         })
